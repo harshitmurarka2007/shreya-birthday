@@ -5,6 +5,84 @@ import confetti from 'canvas-confetti';
 import { Heart, Stars, Mail, Lock, X, Gift, Pause, Play, Volume2, VolumeX, Feather } from 'lucide-react';
 
 /**
+ * ==============================================================================
+ *  🎈 🎂  EASY EDIT ZONE -- CHANGE THINGS HERE  🎂 🎈
+ * ==============================================================================
+ */
+
+const SITE_CONFIG = {
+  // 1. The Date: When is the birthday? (YYYY-MM-DD format)
+  eventDate: new Date('2024-10-25T00:00:00'), 
+
+  // 2. Music: Link to the background music (Must be a direct MP3 link)
+  musicUrl: "https://cdn.pixabay.com/download/audio/2022/10/18/audio_31c2730e64.mp3",
+
+  // 3. Hero Section: The big screen she sees first
+  hero: {
+    title: "Happy Birthday!",
+    subtitle: "\"To the world you may be one person; but to one person you may be the world.\"",
+    buttonText: "Secret Message"
+  },
+
+  // 4. Countdown: What it says while waiting
+  countdown: {
+    title: "Something special is coming...",
+    buttonText: "Early Access"
+  },
+
+  // 5. Gallery: Add your photos here. 
+  // You can use standard image URLs or upload images to a host like Imgur.
+  gallery: [
+    { id: '1', url: 'https://picsum.photos/400/500?random=1', caption: 'Our first date' },
+    { id: '2', url: 'https://picsum.photos/400/400?random=2', caption: 'Summer vacation' },
+    { id: '3', url: 'https://picsum.photos/400/600?random=3', caption: 'That funny face' },
+    // Add more photos by copying the line above and changing the ID and URL
+  ],
+
+  // 6. Poem Section: The romantic poem
+  poem: {
+    title: "A Poem For You",
+    lines: [
+      "In a world of millions,",
+      "It is you I see.",
+      "A guiding star,",
+      "Shining just for me.",
+      "", // Empty string creates a gap/new stanza
+      "Your smile is the sunrise,",
+      "Your laugh, the sweetest tune.",
+      "I love you more than the stars,",
+      "And deeper than the moon."
+    ],
+    signature: "Forever Yours"
+  },
+
+  // 7. The Letter: Your personal message
+  letter: {
+    title: "My Letter To You",
+    paragraphs: [
+      "My Dearest,", // Paragraph 1
+      "As you read this, I hope you realize how incredibly special you are to me. Every day with you feels like a celebration. I built this little corner of the internet just to show a fraction of the love I hold for you.", // Paragraph 2
+      "May this year bring you as much joy as you bring into my life.", // Paragraph 3
+      "Love always,", // Sign-off
+      "[Your Name]"   // Name
+    ]
+  },
+
+  // 8. Secret Message: Hidden behind the lock button
+  secret: {
+    modalTitle: "Shhh... It's a Secret",
+    modalContent: "If you are reading this, I have a little surprise waiting for you. Check the pocket of my blue jacket... I think you'll like what you find there!",
+    closeText: "(Tap anywhere outside to close)"
+  }
+};
+
+/**
+ * ==============================================================================
+ *  ⛔️  DANGER ZONE -- DO NOT EDIT BELOW THIS LINE UNLESS YOU CODE  ⛔️
+ * ==============================================================================
+ */
+
+/**
  * ==========================================
  * TYPES
  * ==========================================
@@ -82,9 +160,8 @@ const Countdown: React.FC<CountdownProps> = ({ targetDate, onComplete }) => {
       </motion.div>
 
       <div className="z-10 text-center">
-        {/* EDITABLE: Change the waiting message text here */}
         <h1 className="text-4xl md:text-6xl font-script text-white mb-8 drop-shadow-md">
-          Something special is coming...
+          {SITE_CONFIG.countdown.title}
         </h1>
         
         <div className="flex justify-center flex-wrap">
@@ -95,13 +172,12 @@ const Countdown: React.FC<CountdownProps> = ({ targetDate, onComplete }) => {
         </div>
 
         <div className="mt-12">
-            {/* EDITABLE: This button skips the countdown. */}
             <button 
                 onClick={onComplete}
                 className="group relative inline-flex items-center justify-center px-8 py-3 font-bold text-white transition-all duration-300 ease-out bg-deep-red rounded-full shadow-lg hover:bg-[#60081C] hover:scale-105"
             >
                 <span className="relative flex items-center gap-2">
-                     <Gift size={20} /> Early Access
+                     <Gift size={20} /> {SITE_CONFIG.countdown.buttonText}
                 </span>
             </button>
             <p className="text-white/80 text-sm mt-4 italic">Can't wait? Click above!</p>
@@ -112,24 +188,16 @@ const Countdown: React.FC<CountdownProps> = ({ targetDate, onComplete }) => {
 };
 
 // --- GALLERY COMPONENT ---
-// EDITABLE: Update the photo links here.
-const photos = [
-  { id: '1', url: 'https://picsum.photos/400/500?random=1', caption: 'Our first date' },
-  { id: '2', url: 'https://picsum.photos/400/400?random=2', caption: 'Summer vacation' },
-  { id: '3', url: 'https://picsum.photos/400/600?random=3', caption: 'That funny face' },
-];
-
 const Gallery: React.FC = () => {
   return (
     <div className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
       <div className="text-center mb-16">
-        {/* EDITABLE: Section Title */}
         <h2 className="text-4xl md:text-5xl font-script text-deep-red mb-4">Our Beautiful Memories</h2>
         <div className="w-24 h-1 bg-rose-gold mx-auto rounded-full"></div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {photos.map((photo, index) => (
+        {SITE_CONFIG.gallery.map((photo, index) => (
           <motion.div
             key={photo.id}
             initial={{ opacity: 0, y: 50 }}
@@ -172,28 +240,18 @@ const PoemSection: React.FC = () => {
             <Feather size={40} />
           </div>
           
-          {/* EDITABLE: Poem Title */}
-          <h2 className="text-3xl md:text-5xl font-script text-deep-red mb-10">A Poem For You</h2>
+          <h2 className="text-3xl md:text-5xl font-script text-deep-red mb-10">{SITE_CONFIG.poem.title}</h2>
           
-          {/* EDITABLE: Poem Content */}
           <div className="font-serif text-lg md:text-2xl text-gray-800 leading-relaxed italic space-y-6">
-            <p>
-              "In a world of millions,<br/>
-              It is you I see.<br/>
-              A guiding star,<br/>
-              Shining just for me."
-            </p>
-            <p>
-              "Your smile is the sunrise,<br/>
-              Your laugh, the sweetest tune.<br/>
-              I love you more than the stars,<br/>
-              And deeper than the moon."
-            </p>
+            {/* We join lines with <br/> to handle multi-line poem stanzas */}
+            {SITE_CONFIG.poem.lines.map((line, i) => (
+              <p key={i} className={line === "" ? "h-4" : ""}>{line}</p>
+            ))}
           </div>
           
           <div className="mt-12 flex items-center justify-center gap-4">
              <div className="h-px w-12 bg-rose-gold"></div>
-             <span className="font-script text-2xl text-deep-red">Forever Yours</span>
+             <span className="font-script text-2xl text-deep-red">{SITE_CONFIG.poem.signature}</span>
              <div className="h-px w-12 bg-rose-gold"></div>
           </div>
         </motion.div>
@@ -211,9 +269,6 @@ interface MusicPlayerProps {
 const MusicPlayer: React.FC<MusicPlayerProps> = ({ isPlaying, onTogglePlay }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isMuted, setIsMuted] = useState(false);
-
-  // EDITABLE: Music URL
-  const MUSIC_URL = "https://cdn.pixabay.com/download/audio/2022/10/18/audio_31c2730e64.mp3"; 
 
   useEffect(() => {
     if (audioRef.current) {
@@ -234,7 +289,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ isPlaying, onTogglePlay }) =>
 
   return (
     <div className="fixed bottom-4 right-4 z-50 flex items-center gap-2 bg-white/90 backdrop-blur-md p-1.5 rounded-full shadow-lg border border-pink-200 transform scale-90 origin-bottom-right md:scale-100">
-      <audio ref={audioRef} src={MUSIC_URL} loop />
+      <audio ref={audioRef} src={SITE_CONFIG.musicUrl} loop />
       
       <button 
         onClick={onTogglePlay}
@@ -260,9 +315,6 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ isPlaying, onTogglePlay }) =>
  * MAIN APP COMPONENT
  * ==========================================
  */
-
-// EDITABLE: Set this date to the actual birthday!
-const TARGET_DATE = new Date(Date.now() + 24 * 60 * 60 * 1000); 
 
 const App: React.FC = () => {
   const [isCelebrationStarted, setIsCelebrationStarted] = useState(false);
@@ -311,7 +363,7 @@ const App: React.FC = () => {
             exit={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
             transition={{ duration: 1 }}
           >
-            <Countdown targetDate={TARGET_DATE} onComplete={handleCountdownComplete} />
+            <Countdown targetDate={SITE_CONFIG.eventDate} onComplete={handleCountdownComplete} />
           </motion.div>
         ) : (
           <motion.div
@@ -330,13 +382,11 @@ const App: React.FC = () => {
                  transition={{ delay: 0.5, duration: 1 }}
                  className="z-10 flex flex-col items-center"
                >
-                 {/* EDITABLE: Main Headline */}
                  <h1 className="text-6xl md:text-8xl font-script text-deep-red mb-6 drop-shadow-sm">
-                   Happy Birthday!
+                   {SITE_CONFIG.hero.title}
                  </h1>
-                 {/* EDITABLE: Subtitle */}
                  <p className="text-xl md:text-2xl font-serif text-gray-700 italic max-w-2xl mx-auto mb-8">
-                   "To the world you may be one person; but to one person you may be the world."
+                   {SITE_CONFIG.hero.subtitle}
                  </p>
                  
                  <div className="animate-bounce mb-8">
@@ -350,7 +400,7 @@ const App: React.FC = () => {
                     className="flex items-center gap-2 px-6 py-3 bg-white/80 backdrop-blur-sm border-2 border-rose-gold text-rose-gold rounded-full shadow-lg hover:bg-rose-gold hover:text-white transition-all duration-300 font-serif italic"
                  >
                     <Lock size={18} />
-                    <span>Secret Message</span>
+                    <span>{SITE_CONFIG.hero.buttonText}</span>
                  </motion.button>
                </motion.div>
                
@@ -368,19 +418,13 @@ const App: React.FC = () => {
                  <div className="mb-8 flex justify-center text-rose-gold">
                    <Mail size={48} />
                  </div>
-                 {/* EDITABLE: Letter Section Title */}
-                 <h2 className="text-4xl font-serif text-gray-800 mb-8">My Letter To You</h2>
+                 <h2 className="text-4xl font-serif text-gray-800 mb-8">{SITE_CONFIG.letter.title}</h2>
                  <div className="bg-[#fffdf0] p-8 md:p-12 rounded-lg shadow-inner border border-stone-200 mx-auto max-w-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
-                    {/* EDITABLE: Letter Content */}
-                    <p className="font-serif text-lg leading-loose text-gray-700 italic">
-                      My Dearest,<br/><br/>
-                      As you read this, I hope you realize how incredibly special you are to me. 
-                      Every day with you feels like a celebration. I built this little corner of the internet 
-                      just to show a fraction of the love I hold for you.<br/><br/>
-                      May this year bring you as much joy as you bring into my life.<br/><br/>
-                      Love always,<br/>
-                      [Your Name]
-                    </p>
+                    <div className="font-serif text-lg leading-loose text-gray-700 italic">
+                      {SITE_CONFIG.letter.paragraphs.map((para, i) => (
+                        <p key={i} className="mb-4">{para}</p>
+                      ))}
+                    </div>
                  </div>
               </div>
             </section>
@@ -419,14 +463,12 @@ const App: React.FC = () => {
                       <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4 text-deep-red">
                         <Lock size={32} />
                       </div>
-                      {/* EDITABLE: Secret Modal Content */}
-                      <h3 className="text-2xl font-script text-deep-red mb-4">Shhh... It's a Secret</h3>
+                      <h3 className="text-2xl font-script text-deep-red mb-4">{SITE_CONFIG.secret.modalTitle}</h3>
                       <p className="font-serif text-lg text-gray-700 italic leading-relaxed">
-                        "If you are reading this, I have a little surprise waiting for you. 
-                        Check the pocket of my blue jacket... I think you'll like what you find there!"
+                        {SITE_CONFIG.secret.modalContent}
                       </p>
                       <div className="mt-6 text-sm text-gray-400 font-sans">
-                        (Tap anywhere outside to close)
+                        {SITE_CONFIG.secret.closeText}
                       </div>
                     </div>
                   </motion.div>
