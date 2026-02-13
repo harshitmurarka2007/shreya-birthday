@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 // 'url' is the link to your image.
 // 'caption' is just for your reference since we hid the text.
 const photos = [
-  { id: '1', url: 'https://drive.google.com/file/d/13YlG0AEYHIAMBE4zb_EebzBU5ndQMQp1/view?usp=drive_link', caption: 'Our first date' },
-  { id: '2', url: 'https://drive.google.com/file/d/1vF8tCDZI6lcAIHu8aX5OcZocqW50ikEU/view?usp=drive_link', caption: 'Summer vacation' },
-  { id: '3', url: 'https://drive.google.com/file/d/15N60dnkX_vpCLyMBY3KxnYygCmTct0KC/view?usp=drive_link', caption: 'That funny face' },
+  { id: '1', url: 'https://picsum.photos/400/500?random=1', caption: 'Our first date' },
+  { id: '2', url: 'https://picsum.photos/400/400?random=2', caption: 'Summer vacation' },
+  { id: '3', url: 'https://picsum.photos/400/600?random=3', caption: 'That funny face' },
 ];
 
 const Gallery: React.FC = () => {
@@ -15,7 +15,7 @@ const Gallery: React.FC = () => {
     <div className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
       <div className="text-center mb-16">
         {/* EDITABLE: Section Title */}
-        <h2 className="text-4xl md:text-5xl font-script text-deep-red mb-4">Beautiful Memories</h2>
+        <h2 className="text-4xl md:text-5xl font-script text-deep-red mb-4">Our Beautiful Memories</h2>
         <div className="w-24 h-1 bg-rose-gold mx-auto rounded-full"></div>
       </div>
 

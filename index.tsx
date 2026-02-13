@@ -11,8 +11,11 @@ import { Heart, Stars, Mail, Lock, X, Gift, Pause, Play, Volume2, VolumeX, Feath
  */
 
 const SITE_CONFIG = {
-  // 1. The Date: When is the birthday? (YYYY-MM-DD format)
-  eventDate: new Date('2024-10-25T00:00:00'), 
+  // 1. The Date: When is the birthday?
+  // We use (Year, MonthIndex, Day, Hour, Minute)
+  // MonthIndex: 0=Jan, 1=Feb, 2=Mar, etc.
+  // TARGET: Feb 15, 2026 at 00:00 (Midnight)
+  eventDate: new Date(2026, 1, 15, 0, 0, 0), 
 
   // 2. Music: Link to the background music (Must be a direct MP3 link)
   musicUrl: "https://cdn.pixabay.com/download/audio/2022/10/18/audio_31c2730e64.mp3",
@@ -31,12 +34,11 @@ const SITE_CONFIG = {
   },
 
   // 5. Gallery: Add your photos here. 
-  // You can use standard image URLs or upload images to a host like Imgur.
+  // We use the thumbnail link format with sz=w1000 for high quality reliable loading
   gallery: [
-    { id: '1', url: 'https://picsum.photos/400/500?random=1', caption: 'Our first date' },
-    { id: '2', url: 'https://picsum.photos/400/400?random=2', caption: 'Summer vacation' },
-    { id: '3', url: 'https://picsum.photos/400/600?random=3', caption: 'That funny face' },
-    // Add more photos by copying the line above and changing the ID and URL
+    { id: '1', url: 'https://drive.google.com/thumbnail?id=15N60dnkX_vpCLyMBY3KxnYygCmTct0KC&sz=w1000', caption: 'Us' },
+    { id: '2', url: 'https://drive.google.com/thumbnail?id=1vF8tCDZI6lcAIHu8aX5OcZocqW50ikEU&sz=w1000', caption: 'Memories' },
+    { id: '3', url: 'https://drive.google.com/thumbnail?id=13YlG0AEYHIAMBE4zb_EebzBU5ndQMQp1&sz=w1000', caption: 'Special Moments' },
   ],
 
   // 6. Poem Section: The romantic poem
@@ -111,8 +113,13 @@ const Countdown: React.FC<CountdownProps> = ({ targetDate, onComplete }) => {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const difference = +targetDate - +new Date();
+      const now = new Date().getTime();
+      const target = targetDate.getTime();
+      const difference = target - now;
       
+      // If result is invalid, stop here
+      if (isNaN(difference)) return;
+
       if (difference > 0) {
         setTimeLeft({
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -121,12 +128,16 @@ const Countdown: React.FC<CountdownProps> = ({ targetDate, onComplete }) => {
           seconds: Math.floor((difference / 1000) % 60),
         });
       } else {
+        // Only trigger completion if the difference is actually negative/zero
         onComplete();
       }
     };
 
+    // Calculate immediately
+    calculateTimeLeft();
+    
+    // Then update every second
     const timer = setInterval(calculateTimeLeft, 1000);
-    calculateTimeLeft(); // Initial call
 
     return () => clearInterval(timer);
   }, [targetDate, onComplete]);
@@ -196,7 +207,7 @@ const Gallery: React.FC = () => {
         <div className="w-24 h-1 bg-rose-gold mx-auto rounded-full"></div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
         {SITE_CONFIG.gallery.map((photo, index) => (
           <motion.div
             key={photo.id}
@@ -204,14 +215,22 @@ const Gallery: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group relative overflow-hidden rounded-xl shadow-lg bg-white p-2 transform transition-transform hover:-translate-y-2"
+            className="group relative overflow-hidden rounded-xl shadow-xl bg-white p-3 transform transition-transform hover:-translate-y-2"
           >
-            <div className="relative overflow-hidden rounded-lg aspect-w-3 aspect-h-4">
+            {/* 
+                SCALING FIX:
+                Removed 'aspect-[3/4]', 'h-full', 'object-cover'.
+                Added 'w-full h-auto' to let the image render in its original aspect ratio without cropping.
+            */}
+            <div className="relative w-full overflow-hidden rounded-lg">
                <img 
                  src={photo.url} 
                  alt={photo.caption}
-                 className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-110"
+                 className="w-full h-auto block transform transition-transform duration-700 group-hover:scale-105"
                />
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <p className="text-white font-serif italic text-center">{photo.caption}</p>
             </div>
           </motion.div>
         ))}
@@ -243,7 +262,6 @@ const PoemSection: React.FC = () => {
           <h2 className="text-3xl md:text-5xl font-script text-deep-red mb-10">{SITE_CONFIG.poem.title}</h2>
           
           <div className="font-serif text-lg md:text-2xl text-gray-800 leading-relaxed italic space-y-6">
-            {/* We join lines with <br/> to handle multi-line poem stanzas */}
             {SITE_CONFIG.poem.lines.map((line, i) => (
               <p key={i} className={line === "" ? "h-4" : ""}>{line}</p>
             ))}
@@ -317,7 +335,15 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ isPlaying, onTogglePlay }) =>
  */
 
 const App: React.FC = () => {
-  const [isCelebrationStarted, setIsCelebrationStarted] = useState(false);
+  // COUNTDOWN LOGIC:
+  // Initialize state by checking if the date has ALREADY passed.
+  // If date is in future, isCelebrationStarted = false (Show Countdown)
+  // If date is in past, isCelebrationStarted = true (Show Website)
+  const [isCelebrationStarted, setIsCelebrationStarted] = useState(() => {
+    const now = new Date();
+    return now >= SITE_CONFIG.eventDate;
+  });
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [showSecretMessage, setShowSecretMessage] = useState(false);
 
