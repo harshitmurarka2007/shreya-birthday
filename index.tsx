@@ -18,62 +18,61 @@ const SITE_CONFIG = {
   eventDate: new Date(2026, 1, 15, 0, 0, 0), 
 
   // 2. Music: Link to the background music (Must be a direct MP3 link)
-  musicUrl: "https://cdn.pixabay.com/download/audio/2022/10/18/audio_31c2730e64.mp3",
+  musicUrl: "https://music.youtube.com/watch?v=MsSIVZlqC9w&si=hX_SfTf3BldCIQOP",
 
   // 3. Hero Section: The big screen she sees first
   hero: {
-    title: "Happy Birthday!",
-    subtitle: "\"To the world you may be one person; but to one person you may be the world.\"",
+    title: "Happy Birthday Shreya !",
+    subtitle: "\"Manjulika Ka Birthday hai sooo havan toh baanta hai.\"",
     buttonText: "Secret Message"
   },
 
   // 4. Countdown: What it says while waiting
   countdown: {
-    title: "Something special is coming...",
+    title: "Get read... your heart’s about to smile....",
     buttonText: "Early Access"
   },
 
   // 5. Gallery: Add your photos here. 
   // We use the thumbnail link format with sz=w1000 for high quality reliable loading
   gallery: [
-    { id: '1', url: 'https://drive.google.com/thumbnail?id=15N60dnkX_vpCLyMBY3KxnYygCmTct0KC&sz=w1000', caption: 'Us' },
-    { id: '2', url: 'https://drive.google.com/thumbnail?id=1vF8tCDZI6lcAIHu8aX5OcZocqW50ikEU&sz=w1000', caption: 'Memories' },
+    { id: '1', url: 'https://drive.google.com/thumbnail?id=15N60dnkX_vpCLyMBY3KxnYygCmTct0KC&sz=w1000', caption: 'Memories' },
+    { id: '2', url: 'https://drive.google.com/thumbnail?id=1vF8tCDZI6lcAIHu8aX5OcZocqW50ikEU&sz=w1000', caption: 'You❤️' },
     { id: '3', url: 'https://drive.google.com/thumbnail?id=13YlG0AEYHIAMBE4zb_EebzBU5ndQMQp1&sz=w1000', caption: 'Special Moments' },
   ],
 
   // 6. Poem Section: The romantic poem
   poem: {
-    title: "A Poem For You",
+    title: "Official Complaint About You🫵🏻",
     lines: [
-      "In a world of millions,",
-      "It is you I see.",
-      "A guiding star,",
-      "Shining just for me.",
+      "You say it’s just another day,",
+      "But why do you look this unfairly fine?",
+      "If birthdays make you glow like this,",
+      "I might need one of yours every night.",
       "", // Empty string creates a gap/new stanza
-      "Your smile is the sunrise,",
-      "Your laugh, the sweetest tune.",
-      "I love you more than the stars,",
-      "And deeper than the moon."
+      
     ],
     signature: "Forever Yours"
   },
 
   // 7. The Letter: Your personal message
   letter: {
-    title: "My Letter To You",
+    title: "Official Notice: You’re Too Cuteeeee😳😳",
     paragraphs: [
       "My Dearest,", // Paragraph 1
-      "As you read this, I hope you realize how incredibly special you are to me. Every day with you feels like a celebration. I built this little corner of the internet just to show a fraction of the love I hold for you.", // Paragraph 2
-      "May this year bring you as much joy as you bring into my life.", // Paragraph 3
-      "Love always,", // Sign-off
-      "[Your Name]"   // Name
+      "As you read this, I know you would be similing or going to write Hurhhhhh in discord but, I just want to say you HAPPPPPPY BIRTHDAY SHREYA!!!!!. I'm just overwhelmed with joy as we are celebrating your 20th birthday together [I mean, I'm here at vijawaada and you at polasar but together in call].", // Paragraph 2
+      "I hope this year gives you everything you dream about — and I hope I get to stand beside you for all of it.",
+      "You deserve the kind of happiness you bring into my life every single day.",// Paragraph 3
+      "Happy Birthday, beautiful. 💫",
+      "Blushing always seeing you,", // Sign-off
+      "Harshit (You know very well)"   // Name
     ]
   },
 
   // 8. Secret Message: Hidden behind the lock button
   secret: {
-    modalTitle: "Shhh... It's a Secret",
-    modalContent: "If you are reading this, I have a little surprise waiting for you. Check the pocket of my blue jacket... I think you'll like what you find there!",
+    modalTitle: "Hurhhhhhhhhh",
+    modalContent: "Patent karlo phir bhi mere pa iska copyright rehaga 😉🤗!",
     closeText: "(Tap anywhere outside to close)"
   }
 };
