@@ -36,9 +36,9 @@ const SITE_CONFIG = {
   // 5. Gallery: Add your photos here. 
   // We use the thumbnail link format with sz=w1000 for high quality reliable loading
   gallery: [
-    { id: '1', url: 'https://drive.google.com/thumbnail?id=15N60dnkX_vpCLyMBY3KxnYygCmTct0KC&sz=w1000', caption: 'Memories' },
-    { id: '2', url: 'https://drive.google.com/thumbnail?id=1vF8tCDZI6lcAIHu8aX5OcZocqW50ikEU&sz=w1000', caption: 'You❤️' },
-    { id: '3', url: 'https://drive.google.com/thumbnail?id=13YlG0AEYHIAMBE4zb_EebzBU5ndQMQp1&sz=w1000', caption: 'Special Moments' },
+    { id: '1', url: 'https://drive.google.com/thumbnail?id=15N60dnkX_vpCLyMBY3KxnYygCmTct0KC&sz=w1000', caption: 'Memories😊' },
+    { id: '2', url: 'https://drive.google.com/thumbnail?id=15OGmf70dPlmcwkpMLpR7Rh6HbwTzgyvp&sz=w1000', caption: 'Manjulika❤️' },
+    { id: '3', url: 'https://drive.google.com/thumbnail?id=13YlG0AEYHIAMBE4zb_EebzBU5ndQMQp1&sz=w1000', caption: 'Second Meet😶' },
   ],
 
   // 6. Poem Section: The romantic poem
@@ -60,7 +60,7 @@ const SITE_CONFIG = {
     title: "Official Notice: You’re Too Cuteeeee😳😳",
     paragraphs: [
       "My Dearest,", // Paragraph 1
-      "As you read this, I know you would be similing or going to write Hurhhhhh in discord but, I just want to say you HAPPPPPPY BIRTHDAY SHREYA!!!!!. I'm just overwhelmed with joy as we are celebrating your 20th birthday together [I mean, I'm here at vijawaada and you at polasar but together in call].And also sorrrrrrrrry for all the things that happened in past, I will never do that ever again, or as you wish mere saar pa cockroach, insects or joh bhi tum bolo woh ghir jayaga (●'◡'●)", // Paragraph 2
+      "As you read this, I know you would be similing or going to write Hurhhhhh in discord but, I just want to say you HAPPPPPPY BIRTHDAY SHREYA!!!!!. I'm just overwhelmed with joy as we are celebrating your 20th birthday together [I mean, I'm here at vijawaada and you at polasar but together in call].And also sorrrrrrrrry for all the things that happened in the past, I will never do that ever again, or as you wish mere saar pa cockroach, insects or joh bhi tum bolo woh ghir jayaga (●'◡'●)", // Paragraph 2
       "I hope this year gives you everything you dream about — and I hope I get to stand beside you for all of it.",
       "You deserve the kind of happiness you bring into my life every single day.",// Paragraph 3
       "Happy Birthday, beautiful. 💫",
