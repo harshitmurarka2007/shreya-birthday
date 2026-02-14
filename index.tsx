@@ -30,7 +30,7 @@ const SITE_CONFIG = {
   // 4. Countdown: What it says while waiting
   countdown: {
     title: "Get ready... your heart’s about to smile....",
-    buttonText: "Early Access"
+    buttonText: "Please Don't press!!!!"
   },
 
   // 5. Gallery: Add your photos here. 
@@ -60,11 +60,11 @@ const SITE_CONFIG = {
     title: "Official Notice: You’re Too Cuteeeee😳😳",
     paragraphs: [
       "My Dearest,", // Paragraph 1
-      "As you read this, I know you would be similing or going to write Hurhhhhh in discord but, I just want to say you HAPPPPPPY BIRTHDAY SHREYA!!!!!. I'm just overwhelmed with joy as we are celebrating your 20th birthday together [I mean, I'm here at vijawaada and you at polasar but together in call].", // Paragraph 2
+      "As you read this, I know you would be similing or going to write Hurhhhhh in discord but, I just want to say you HAPPPPPPY BIRTHDAY SHREYA!!!!!. I'm just overwhelmed with joy as we are celebrating your 20th birthday together [I mean, I'm here at vijawaada and you at polasar but together in call].And also sorrrrrrrrry for all the things and happened in past, I will never do that ever again, or as you wish mere saar pa cockroach, insects or joh bhi tum bolo woh ghir jayaga (●'◡'●)", // Paragraph 2
       "I hope this year gives you everything you dream about — and I hope I get to stand beside you for all of it.",
       "You deserve the kind of happiness you bring into my life every single day.",// Paragraph 3
       "Happy Birthday, beautiful. 💫",
-      "Blushing always seeing you,", // Sign-off
+      "Blushing always seeing you😳,", // Sign-off
       "Harshit (You know very well)"   // Name
     ]
   },
@@ -72,7 +72,7 @@ const SITE_CONFIG = {
   // 8. Secret Message: Hidden behind the lock button
   secret: {
     modalTitle: "Hurhhhhhhhhh",
-    modalContent: "Patent karlo phir bhi mere pa iska copyright rehaga 😉🤗!",
+    modalContent: "Patent karlo phir bhi mere pa iska copyright rehaga 😉🤗! and or video call ma dhekna jara 👀👀",
     closeText: "(Tap anywhere outside to close)"
   }
 };
